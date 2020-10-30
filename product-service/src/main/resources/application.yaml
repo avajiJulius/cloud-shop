@@ -1,0 +1,14 @@
+server:
+  port: 7777
+
+spring:
+  datasource:
+    driver-class-name: org.postgresql.Driver
+    url: jdbc:postgresql://localhost:5432/cloudshop?currentSchema=cloudshop
+    username: avaji
+    password: rageagainst
+  flyway:
+    sql-migration-prefix: V
+    repeatable-sql-migration-prefix: R
+    sql-migration-separator: __
+    sql-migration-suffixes: .sql
