@@ -1,0 +1,10 @@
+pluginManagement {
+    repositories {
+        gradlePluginPortal()
+    }
+}
+
+rootProject.name = 'cloud-shop'
+
+include 'user-service'
+include 'product-service'
