@@ -8,3 +8,6 @@ rootProject.name = 'cloud-shop'
 
 include 'user-service'
 include 'product-service'
+include 'discovery-service'
+include 'config-server'
+include 'proxy-server'

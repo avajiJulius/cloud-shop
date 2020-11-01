@@ -7,8 +7,12 @@ import com.cloudshop.productservice.exceptions.ProductModificationException;
 import com.cloudshop.productservice.exceptions.ProductNotFoundException;
 import com.cloudshop.productservice.repositories.ProductRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.jpa.domain.Specification;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
@@ -64,8 +68,10 @@ public class ProductServiceImpl implements ProductService {
     }
 
     @Override
-    public List<Product> findAll() {
-        List<Product> result = repository.findAll();
+    public Iterable<Product> findAll() {
+        List<Product> result = new ArrayList<>();
+        Iterable<Product> iterable = repository.findAll();
+        iterable.forEach(t -> result.add(t));
         if(result.isEmpty()) {
             throw new ProductNotFoundException("No product in the database");
         }
@@ -93,6 +99,11 @@ public class ProductServiceImpl implements ProductService {
             throw new NullProductIdException("Product ID is null", exception);
         }
         return product.get();
+    }
+
+    @Override
+    public Page<Product> getProductWithPagingAndFiltering(int pageNumber, int pageSize, Specification<Product> specification) {
+        return repository.findAll(specification, PageRequest.of(pageNumber, pageSize));
     }
 
 

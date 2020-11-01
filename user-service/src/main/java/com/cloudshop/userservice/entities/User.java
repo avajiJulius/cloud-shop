@@ -9,7 +9,7 @@ import java.time.LocalDate;
 @Entity
 @Data
 @NoArgsConstructor
-@Table(name = "usr")
+@Table(name = "users")
 public class User {
 
     @Id
@@ -17,10 +17,15 @@ public class User {
     @Column(name = "id")
     private Long id;
 
+    @Column(name = "username")
     private String username;
+    @Column(name = "first_name")
     private String firstName;
+    @Column(name = "last_name")
     private String lastName;
+    @Column(name = "date_of_birth")
     private LocalDate dateOfBirth;
+    @Column(name = "email")
     private String email;
 
 }

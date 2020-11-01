@@ -4,6 +4,9 @@ import com.cloudshop.productservice.entities.Product;
 import com.cloudshop.productservice.exceptions.ProductModificationException;
 import com.cloudshop.productservice.exceptions.NullProductIdException;
 import com.cloudshop.productservice.exceptions.ProductNotFoundException;
+import com.cloudshop.productservice.repositories.specification.ProductSpecification;
+import org.springframework.data.domain.Page;
+import org.springframework.data.jpa.domain.Specification;
 
 import java.util.List;
 
@@ -33,7 +36,7 @@ public interface ProductService {
      * @return list of all products.
      * @throws ProductNotFoundException if there is no product in the database.
      */
-    List<Product> findAll();
+    Iterable<Product> findAll();
 
     /**
      * Retrieves all available products.
@@ -52,4 +55,14 @@ public interface ProductService {
      * @throws ProductNotFoundException if {@literal product} is not found.
      */
     Product findById(Long id);
+
+    /**
+     * Returns a {@link Page} of products matching the given {@link Specification}.
+     *
+     * @param specification can be {@literal null}.
+     * @param pageNumber must not be {@literal null}.
+     * @param pageSize must not be {@literal null}.
+     * @return never {@literal null}.
+     */
+    Page<Product> getProductWithPagingAndFiltering(int pageNumber, int pageSize, Specification<Product> specification);
 }
