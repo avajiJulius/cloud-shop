@@ -24,7 +24,9 @@ public class Product {
     private LocalDate createDate;
     @Column(name = "on_update")
     private LocalDate updateDate;
-    @Column(name = "enabled")
-    private boolean isEnable;
+    @Column(name = "available")
+    private boolean isAvailable;
+    @Column(name = "last_operation")
+    private String operation;
 
 }

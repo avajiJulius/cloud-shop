@@ -3,8 +3,7 @@ package com.cloudshop.productservice.controllers;
 import com.cloudshop.productservice.entities.Product;
 import com.cloudshop.productservice.services.ProductService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -18,9 +17,26 @@ public class ProductController {
         this.service = service;
     }
 
-    @GetMapping(name = "/products")
+    @GetMapping(name = "/")
     public List<Product> showProducts() {
-        List<Product> all = service.findAll();
-        return all;
+        List<Product> result = service.findAllAvailable();
+        return result;
     }
+//
+//
+//    @PostMapping(name = "/create")
+//    public String createProduct(@ModelAttribute(name = "product") Product product) {
+//        service.createOrUpdate(product);
+//        return "success create!";
+//    }
+//
+//    @PostMapping (name = "/update/{id}")
+//    public String updateProduct(@PathVariable(name = "id") Long id) {
+//        Product pro = service.findById(id);
+//        service.createOrUpdate(pro);
+//        return "success update!";
+//    }
+
+
+
 }

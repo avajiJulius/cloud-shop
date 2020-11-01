@@ -5,7 +5,8 @@ create table products (
       old_price numeric default -1,
       on_create timestamp default current_timestamp,
       on_update timestamp default current_timestamp,
-      enabled boolean not null
+      available boolean not null,
+      last_operation varchar(1) not null
 );
 
 create or replace function update_date() returns trigger as $$
@@ -20,7 +21,7 @@ $$ language 'plpgsql';
 
 create trigger update_date_trigger after update on products for each row when (old.* is distinct from new.*) execute procedure update_date();
 
-insert into products(title, price, enabled)
-values ('milk', 120, true), ('choclate', 200, true),
-       ('ananas', 300, true), ('lemon', 60, true),
-       ('mango', 260, true), ('coffie', 100, true);
+insert into products(title, price, available, last_operation)
+values ('milk', 120, true, 'C'), ('choclate', 200, true, 'C'),
+       ('ananas', 300, true, 'U'), ('lemon', 60, true, 'U'),
+       ('mango', 260, true, 'C'), ('coffie', 100, false, 'D');
