@@ -1,11 +1,10 @@
-package com.cloudshop.configserver;
+package com.cloudshop.client;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
 @SpringBootTest
-@EnableConfigServer
-class ConfigServerApplicationTests {
+class ClientApplicationTests {
 
 	@Test
 	void contextLoads() {

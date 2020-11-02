@@ -6,8 +6,12 @@ pluginManagement {
 
 rootProject.name = 'cloud-shop'
 
+include 'webview-service'
 include 'user-service'
 include 'product-service'
 include 'discovery-service'
 include 'config-server'
 include 'proxy-server'
+include 'common'
+include 'client'
+
