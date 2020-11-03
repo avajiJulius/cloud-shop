@@ -19,7 +19,9 @@ public class Product {
     @Column(name = "title")
     private String title;
     @Column(name = "price")
-    private Integer price;
+    private double price;
+    @Column(name = "old_price")
+    private  double oldPrice;
     @Column(name = "on_create")
     private LocalDate createDate;
     @Column(name = "on_update")
